@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gingama4.com/sitemap.xml
