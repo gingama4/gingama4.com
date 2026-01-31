@@ -23,9 +23,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
+    title: "gingama4.com",
+    description: "作ったものと、学んだことを置いていく個人サイト。",
+    url: "https://gingama4.com",
+    siteName: "gingama4.com",
+    type: "website",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"]
+  },
 };
 
 export default function RootLayout({
