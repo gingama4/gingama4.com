@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -32,9 +33,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og.png"]
+    images: ["/og.png"],
   },
 };
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/works", label: "Works" },
+  { href: "/posts", label: "Blog" },
+  { href: "/about", label: "About" },
+] as const;
 
 export default function RootLayout({
   children,
@@ -43,10 +51,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className="min-h-dvh">
+          <header className="border-b">
+            <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-4">
+              <Link href="/" className="font-semibold">
+                gingama4.com
+              </Link>
+              <nav className="flex items-center gap-4 text-sm">
+                {navItems.map((item) => (
+                  <Link key={item.href} href={item.href} className="hover:underline">
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </header>
+
+          <main className="mx-auto max-w-3xl px-4 py-10">{children}</main>
+
+          <footer className="border-t">
+            <div className="mx-auto max-w-3xl px-4 py-6 text-sm text-neutral-600">
+              <p>© {new Date().getFullYear()} gingama4.com</p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
