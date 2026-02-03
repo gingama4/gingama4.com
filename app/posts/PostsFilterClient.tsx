@@ -1,7 +1,8 @@
 "use client";
 
+import TagLink from "@/components/TagLink";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 type Post = {
   slug: string;
@@ -52,18 +53,13 @@ export default function PostsFilterClient({ posts }: { posts: Post[] }) {
                 {(post.tags?.length ?? 0) > 0 ? (
                   <div className="flex flex-wrap gap-2 pt-1 text-xs text-neutral-600">
                     {post.tags!.map((t) => (
-                      <Link
+                      <TagLink
                         key={t}
+                        tag={t}
                         href={`/posts?tag=${encodeURIComponent(t)}`}
-                        className={[
-                          "rounded-full border px-2 py-0.5",
-                          activeTag === t
-                            ? "bg-neutral-900 text-white"
-                            : "hover:bg-neutral-50",
-                        ].join(" ")}
-                      >
-                        #{t}
-                      </Link>
+                        active={activeTag === t}
+                        size="sm"
+                      />
                     ))}
                   </div>
                 ) : null}

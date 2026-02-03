@@ -6,18 +6,24 @@ export default function TagLink({
   active = false,
   count,
   prefixHash = true,
+  size = "md",
 }: {
   tag: string;
   href: string;
   active?: boolean;
   count?: number;
   prefixHash?: boolean;
+  size?: "sm" | "md";
 }) {
+  const sizeClass =
+    size === "sm" ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm";
+
   return (
     <Link
       href={href}
       className={[
-        "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition-colors",
+        "inline-flex items-center gap-1 rounded-full border transition-colors",
+        sizeClass,
         active
           ? "bg-neutral-900 text-white border-neutral-900"
           : "hover:bg-neutral-50",
