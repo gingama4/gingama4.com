@@ -1,6 +1,6 @@
 import { getAllPosts, getAllTags } from "@/lib/posts";
-import Link from "next/link";
 import PostsFilterClient from "./PostsFilterClient";
+import TagSidebar from "./TagSidebar";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -12,15 +12,21 @@ export default function PostPage() {
   const tags = getAllTags();
 
   return (
-    <div className="space-y-4">
-      <header>
+    <div className="space-y-6">
+      <header className="space-y-1">
         <h1 className="text-2xl font-semibold">Blog</h1>
         <p className="text-neutral-700">学んだことや開発ログ。</p>
       </header>
 
-      <Suspense fallback={<div className="text-neutral-700">Loading...</div>}>
-        <PostsFilterClient posts={posts} tags={tags} />
-      </Suspense>
+      <div className="grid gap-8 lg:grid-cols-[500px_1fr]">
+        <Suspense fallback={<div className="text-neutral-700">Loading...</div>}>
+          <PostsFilterClient posts={posts} />
+        </Suspense>
+
+        <Suspense fallback={<div className="text-neutral-700">Loading...</div>}>
+          <TagSidebar tags={tags} />
+        </Suspense>
+      </div>
     </div>
   );
 }

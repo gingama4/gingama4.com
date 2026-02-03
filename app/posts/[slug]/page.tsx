@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import PostTagList from "./PostTagList";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -60,6 +61,8 @@ export default async function PostPage({ params }: Props) {
             {" · "}
             <span>更新日: {post.frontmatter.updatedAt}</span>
           </div>
+
+          <PostTagList tags={post.frontmatter.tags} />
         </header>
 
         <div
