@@ -14,10 +14,31 @@ export async function generateMetadata({ params }: Props) {
 
   try {
     const post = await getPostBySlug(slug);
+    const title = post.frontmatter.title;
+    const description = post.frontmatter.description ?? "gingama4.com の記事";
+    const url = `https://gingama4.com/posts/${slug}`;
+    const image = "/og.png";
+
     return {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
       alternates: { canonical: `/posts/${slug}` },
+      openGraph: {
+        title,
+        description,
+        url,
+        siteName: "gingama4.com",
+        type: "article",
+        publishedTime: post.frontmatter.publishedAt,
+        modifiedTime: post.frontmatter.updatedAt,
+        images: [{ url: image, width: 1200, height: 630 }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
+      },
     };
   } catch {
     return {};
