@@ -18,7 +18,7 @@ export default function PostPage() {
         <p className="text-neutral-700">学んだことや開発ログ。</p>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[500px_1fr]">
+      <div className="grid gap-8 lg:grid-cols-[1fr_280px] lg:items-start">
         <Suspense fallback={<div className="text-neutral-700">Loading...</div>}>
           <PostsFilterClient posts={posts} />
         </Suspense>
