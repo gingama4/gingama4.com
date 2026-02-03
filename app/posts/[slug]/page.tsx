@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props) {
     const image = "/og.png";
 
     return {
-      title: post.frontmatter.title,
-      description: post.frontmatter.description,
+      title,
+      description,
       alternates: { canonical: `/posts/${slug}` },
       openGraph: {
         title,
