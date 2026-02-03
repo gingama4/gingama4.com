@@ -84,6 +84,7 @@ export function getPostSlugs(): string[] {
   return fs
     .readdirSync(postsDirectory)
     .filter((name) => name.endsWith(".md"))
+    .filter((name) => !name.startsWith("_"))
     .map((name) => name.replace(/\.md$/, ""));
 }
 
