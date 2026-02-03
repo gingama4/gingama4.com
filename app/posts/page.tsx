@@ -1,5 +1,7 @@
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getAllTags } from "@/lib/posts";
 import Link from "next/link";
+import PostsFilterClient from "./PostsFilterClient";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Blog",
@@ -7,6 +9,7 @@ export const metadata = {
 
 export default function PostPage() {
   const posts = getAllPosts();
+  const tags = getAllTags();
 
   return (
     <div className="space-y-4">
@@ -15,30 +18,9 @@ export default function PostPage() {
         <p className="text-neutral-700">学んだことや開発ログ。</p>
       </header>
 
-      {posts.length === 0 ? (
-        <p className="text-neutral-700">記事はまだありません。</p>
-      ): (
-        <ul className="space-y-6">
-          {posts.map((post) => (
-            <li key={post.slug} className="space-y-1">
-              <Link
-                href={`/posts/${post.slug}`}
-                className="text-lg font-medium hover:underline"
-              >
-                {post.title}
-              </Link>
-              <div className="text-sm text-neutral-600">
-                <span>投稿日: {post.publishedAt}</span>
-                { " ・ " }
-                <span>更新日: {post.updatedAt}</span>
-              </div>
-              {post.description ? (
-                <p className="text-sm text-neutral-700">{post.description}</p>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      )}
+      <Suspense fallback={<div className="text-neutral-700">Loading...</div>}>
+        <PostsFilterClient posts={posts} tags={tags} />
+      </Suspense>
     </div>
   );
 }

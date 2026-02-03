@@ -141,3 +141,23 @@ export async function getPostBySlug(slug: string): Promise<{
     contentHtml,
   };
 }
+
+/**
+ * すべてのタグとその出現回数を取得する
+ *
+ * @returns タグとその出現回数の配列
+ */
+export function getAllTags(): Array<{ tag: string; count: number }> {
+  const posts = getAllPosts();
+  const map = new Map<string, number>();
+
+  for (const post of posts) {
+    for (const tag of post.tags ?? []) {
+      map.set(tag, (map.get(tag) ?? 0) + 1);
+    }
+  }
+
+  return Array.from(map.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => a.tag.localeCompare(b.tag, "ja"));
+}
