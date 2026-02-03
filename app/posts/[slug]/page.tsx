@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
-import PostTagList from "./PostTagList";
+import PostTagList from "../PostTagList";
 
 type Props = {
   params: Promise<{ slug: string }>;
