@@ -41,7 +41,7 @@ export type PostListItem = PostFrontmatter & {
 function assertValidDate(date: string, fieldName: string, slug: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     throw new Error(
-      `[posts ]Invalid ${fieldName} format in "${slug}". Expected YYYY-MM-DD, got: ${date}`,
+      `[posts ]Invalid ${fieldName} format in "${slug}". Expected YYYY-MM-DD, got: ${date}`
     );
   }
 }
@@ -56,7 +56,7 @@ function assertValidDate(date: string, fieldName: string, slug: string) {
  */
 function getPostFrontmatter(
   fm: Partial<PostFrontmatter>,
-  slug: string,
+  slug: string
 ): PostFrontmatter {
   if (!fm.title) throw new Error(`[posts] Missing title in "${slug}"`);
   if (!fm.publishedAt)

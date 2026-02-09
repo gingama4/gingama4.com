@@ -21,11 +21,12 @@ export default function PostsFilterClient({ posts }: { posts: Post[] }) {
     ? posts.filter((p) => (p.tags ?? []).includes(activeTag))
     : posts;
 
-  return(
+  return (
     <section className="space-y-2">
       {activeTag ? (
         <p className="text-sm text-neutral-600">
-          フィルタ: <span className="font-medium">{activeTag}</span> ({filteredPosts.length}件)
+          フィルタ: <span className="font-medium">{activeTag}</span> (
+          {filteredPosts.length}件)
         </p>
       ) : (
         <p className="text-sm text-neutral-600">{filteredPosts.length}件</p>
@@ -35,40 +36,40 @@ export default function PostsFilterClient({ posts }: { posts: Post[] }) {
         <p className="text-sm text-neutral-700">該当する記事がありません。</p>
       ) : (
         <ul className="space-y-6">
-            {filteredPosts.map((post) => (
-              <li key={post.slug} className="space-y-1">
-                <Link
-                  href={`/posts/${post.slug}`}
-                  className="text-lg font-medium hover:underline"
-                >
-                  {post.title}
-                </Link>
+          {filteredPosts.map((post) => (
+            <li key={post.slug} className="space-y-1">
+              <Link
+                href={`/posts/${post.slug}`}
+                className="text-lg font-medium hover:underline"
+              >
+                {post.title}
+              </Link>
 
-                <div className="text-sm text-neutral-600">
-                  <span>投稿日: {post.publishedAt}</span>
-                  { " ・ " }
-                  <span>更新日: {post.updatedAt}</span>
+              <div className="text-sm text-neutral-600">
+                <span>投稿日: {post.publishedAt}</span>
+                {" ・ "}
+                <span>更新日: {post.updatedAt}</span>
+              </div>
+
+              {(post.tags?.length ?? 0) > 0 ? (
+                <div className="flex flex-wrap gap-2 pt-1 text-xs text-neutral-600">
+                  {post.tags!.map((t) => (
+                    <TagLink
+                      key={t}
+                      tag={t}
+                      href={`/posts?tag=${encodeURIComponent(t)}`}
+                      active={activeTag === t}
+                      size="sm"
+                    />
+                  ))}
                 </div>
+              ) : null}
 
-                {(post.tags?.length ?? 0) > 0 ? (
-                  <div className="flex flex-wrap gap-2 pt-1 text-xs text-neutral-600">
-                    {post.tags!.map((t) => (
-                      <TagLink
-                        key={t}
-                        tag={t}
-                        href={`/posts?tag=${encodeURIComponent(t)}`}
-                        active={activeTag === t}
-                        size="sm"
-                      />
-                    ))}
-                  </div>
-                ) : null}
-
-                {post.description ? (
-                  <p className="text-sm text-neutral-700">{post.description}</p>
-                ) : null}
-              </li>
-            ))}
+              {post.description ? (
+                <p className="text-sm text-neutral-700">{post.description}</p>
+              ) : null}
+            </li>
+          ))}
         </ul>
       )}
     </section>

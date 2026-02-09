@@ -15,8 +15,7 @@ export default function TagLink({
   prefixHash?: boolean;
   size?: "sm" | "md";
 }) {
-  const sizeClass =
-    size === "sm" ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm";
+  const sizeClass = size === "sm" ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm";
 
   return (
     <Link

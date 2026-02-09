@@ -10,7 +10,9 @@ export default function Home() {
     <div className="space-y-10">
       <section className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">gingama4.com</h1>
-        <p className="text-neutral-700">作ったものと、学んだことを置いていく個人サイト。</p>
+        <p className="text-neutral-700">
+          作ったものと、学んだことを置いていく個人サイト。
+        </p>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
           {links.map((l) => (
             <a
@@ -43,7 +45,9 @@ export default function Home() {
             もっと見る
           </Link>
         </div>
-        <p className="text-neutral-700">準備中。開発ログや学びをメモしていく。</p>
+        <p className="text-neutral-700">
+          準備中。開発ログや学びをメモしていく。
+        </p>
       </section>
     </div>
   );

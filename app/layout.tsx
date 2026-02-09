@@ -51,7 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="min-h-dvh">
           <header className="border-b">
             <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-4">
@@ -60,7 +62,11 @@ export default function RootLayout({
               </Link>
               <nav className="flex items-center gap-4 text-sm">
                 {navItems.map((item) => (
-                  <Link key={item.href} href={item.href} className="hover:underline">
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="hover:underline"
+                  >
                     {item.label}
                   </Link>
                 ))}

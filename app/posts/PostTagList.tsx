@@ -2,11 +2,7 @@
 
 import TagLink from "@/components/TagLink";
 
-export default function PostTagList({
-  tags,
-}: {
-  tags: string[] | undefined;
-}) {
+export default function PostTagList({ tags }: { tags: string[] | undefined }) {
   if (!tags || tags.length === 0) return null;
 
   return (

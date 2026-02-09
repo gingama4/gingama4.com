@@ -25,7 +25,12 @@ export default function TagSidebar({
       <h2 className="text-sm font-semibold text-neutral-700">タグ</h2>
 
       <div className="flex flex-wrap gap-2">
-        <TagLink tag="すべて" href={makeHref(null)} active={!activeTag} prefixHash={false} />
+        <TagLink
+          tag="すべて"
+          href={makeHref(null)}
+          active={!activeTag}
+          prefixHash={false}
+        />
         {tags.map(({ tag, count }) => (
           <TagLink
             key={tag}
