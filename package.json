@@ -1,10 +1,12 @@
 {
   "name": "gingama4.com",
+  "private": true,
   "type": "module",
   "version": "1.0.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": "24.18.0"
   },
+  "packageManager": "pnpm@11.17.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -14,15 +16,7 @@
     "format": "biome format --write .",
     "lint": "biome lint .",
     "worker:dev": "pnpm build && wrangler dev",
-    "worker:deploy": "pnpm build && wrangler deploy",
-    "preinstall": "npx only-allow pnpm"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.17.0",
-      "onFail": "download"
-    }
+    "worker:deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
