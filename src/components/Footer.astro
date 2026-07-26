@@ -1,3 +1,24 @@
+---
+import ThemeIcon from "@components/ThemeIcon.astro";
+---
+
 <footer>
-  <p>&copy; gingama4 2026</p>
+  <div class="footer-container">
+    <p>&copy; 2026 gingama4</p>
+    <ThemeIcon />
+  </div>
 </footer>
+<style>
+footer {
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-container {
+  width: min(100% - 2rem, var(--content-width));
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  margin: 0 auto;
+  display: flex;
+}
+</style>

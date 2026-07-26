@@ -12,12 +12,28 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
-    <Footer />
+    <div class="site-frame">
+      <Header />
+      <h1>{pageTitle}</h1>
+      <main class="container">
+        <slot />
+      </main>
+      <Footer />
+    </div>
     <script>
     import "@/scripts/menu.js";
     </script>
   </body>
 </html>
+<style>
+.site-frame {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.container {
+  width: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
+}
+</style>
