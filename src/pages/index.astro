@@ -1,5 +1,58 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Avatar from "@components/Avatar.astro";
 ---
 
-<BaseLayout> </BaseLayout>
+<BaseLayout>
+  <div class="home">
+    <div class="profile">
+      <div class="avatar-box">
+        <Avatar />
+      </div>
+      <h1>gingama4</h1>
+    </div>
+    <div class="navigation">
+      <div class="links">
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/gingama4">GitHub</a></li>
+          <li><a href="https://x.com/gingama4">X</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+.home {
+  width: min(calc(100% - 48px), var(--max-width));
+  grid-template-columns: 512px 1fr;
+  align-items: start;
+  gap: 56px;
+  margin: 56px auto 80px;
+  display: grid;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    letter-spacing: 0.06em;
+    margin: 1rem 0;
+    font-size: 2em;
+  }
+}
+
+@media (width <= 860px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    margin: 24px auto;
+  }
+
+  .avatar-box {
+    width: 400px;
+  }
+}
+</style>
