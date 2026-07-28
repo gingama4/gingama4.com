@@ -1,0 +1,109 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Avatar from "@components/Avatar.astro";
+
+interface Props {
+  pageTitle?: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="page-layout">
+    <main>
+      <slot />
+    </main>
+    <aside class="sidebar">
+      <section class="profile">
+        <div class="avatar-box">
+          <Avatar />
+        </div>
+        <h2>gingama4</h2>
+        <p>Webエンジニア、バックエンド中心。東京を拠点に活動してます。</p>
+      </section>
+      <section class="tag">
+        <h2>Tag</h2>
+        <ul>
+          <li>テスト</li>
+          <li>テスト</li>
+        </ul>
+      </section>
+      <section class="link">
+        <h2>Link</h2>
+        <ul class="link-list">
+          <li><a href="https://github.com/gingama4">GitHub</a></li>
+          <li><a href="https://x.com/gingama4">X</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</BaseLayout>
+<style>
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 56px;
+  align-items: start;
+}
+
+.sidebar {
+  display: grid;
+  gap: 20px;
+
+  section {
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    background: var(--color-subbg);
+    h2 {
+      font-size: 1em;
+    }
+
+    p,
+    a {
+      font-size: 0.88rem;
+    }
+  }
+}
+
+.profile {
+  border-radius: 10%;
+
+  .avatar-box {
+    width: 96px;
+  }
+}
+
+.link-list {
+  display: flex;
+  list-style: none;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (width <= 860px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .sidebar {
+    grid-template-columns: repeat(2, 1fr);
+
+    :first-child {
+      grid-row: span 2;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+
+    :first-child {
+      grid-row: auto;
+    }
+  }
+}
+</style>

@@ -23,9 +23,9 @@ if (pageTitle) {
   <body>
     <div class="site-frame">
       <Header />
-      <main class="container">
+      <div class="container">
         <slot />
-      </main>
+      </div>
       <Footer />
     </div>
   </body>
@@ -39,6 +39,6 @@ if (pageTitle) {
 
 .container {
   width: min(100% - 2rem, var(--content-width));
-  margin-inline: auto;
+  margin: 56px auto 80px;
 }
 </style>
