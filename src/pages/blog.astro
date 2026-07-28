@@ -1,5 +1,6 @@
 ---
 import AsideLayout from "@layouts/AsideLayout.astro";
+import ContentHeader from "@components/ContentHeader.astro";
 import BlogPost from "@components/BlogPost.astro";
 import { getCollection } from "astro:content";
 
@@ -7,27 +8,11 @@ const allPosts = await getCollection("blog");
 ---
 
 <AsideLayout pageTitle="Blog">
-  <header class="title-box">
+  <ContentHeader>
     <h1>Blog</h1>
     <p>学んだことや開発ログ</p>
-  </header>
+  </ContentHeader>
   <ul>
     {allPosts.map((post) => <BlogPost url={`/posts/${post.id}`} title={post.data.title} />)}
   </ul>
 </AsideLayout>
-<style>
-.title-box {
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 32px;
-  padding: 0 0 32px;
-
-  h1 {
-    margin: 0 0 5px 0;
-  }
-
-  p:last-child {
-    color: var(--color-muted);
-    margin: 0;
-  }
-}
-</style>

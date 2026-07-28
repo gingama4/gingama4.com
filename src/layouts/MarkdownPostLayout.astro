@@ -1,5 +1,6 @@
 ---
 import AsideLayout from "@layouts/AsideLayout.astro";
+import ContentHeader from "@components/ContentHeader.astro";
 import Tag from "@components/Tag.astro";
 import type { PostFrontmatter } from "@/types/content";
 
@@ -12,10 +13,10 @@ const { frontmatter } = Astro.props;
 
 <AsideLayout pageTitle={frontmatter.title}>
   <article class="post">
-    <header class="post-header">
+    <ContentHeader>
       <h1>{frontmatter.title}</h1>
       <p>Publish: {frontmatter.pubDate.toLocaleDateString()}</p>
-    </header>
+    </ContentHeader>
 
     <div class="post-content">
       <slot />
